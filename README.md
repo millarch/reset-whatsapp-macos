@@ -23,9 +23,15 @@ Chats on your phone and WhatsApp documents stored in iCloud Drive are not change
 - The app makes no network connections of its own. It only opens the official WhatsApp page in the Mac App Store after a full reset or if WhatsApp is not installed.
 - It does not inspect chat content; it removes known local directories as complete units.
 
+## Download
+
+Download the latest compiled app: [Reset WhatsApp for macOS](https://github.com/millarch/reset-whatsapp-macos/releases/latest/download/Reset-WhatsApp.zip).
+
+Unzip it, move `Reset WhatsApp.app` to `/Applications`, and follow the permission steps below. The release uses ad-hoc signing; macOS may ask you to confirm that you want to open it.
+
 ## Install and use
 
-1. Download a release or build `Reset WhatsApp.app` yourself.
+1. Download the app above or build `Reset WhatsApp.app` yourself.
 2. Move it to `/Applications`.
 3. Grant it **Full Disk Access** in **System Settings › Privacy & Security › Full Disk Access**.
 4. Open **Reset WhatsApp** and choose **Standard Reset** first.
