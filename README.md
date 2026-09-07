@@ -27,7 +27,17 @@ Chats on your phone and WhatsApp documents stored in iCloud Drive are not change
 
 Download the latest compiled app: [Reset WhatsApp for macOS](https://github.com/millarch/reset-whatsapp-macos/releases/latest/download/Reset-WhatsApp.zip).
 
-Unzip it, move `Reset WhatsApp.app` to `/Applications`, and follow the permission steps below. The release uses ad-hoc signing; macOS may ask you to confirm that you want to open it.
+The compiled app runs on Apple Silicon Macs (M1 or later) with macOS 13 or later. On an Intel Mac, [build from source](#build-from-source) instead.
+
+Unzip it, move `Reset WhatsApp.app` to `/Applications`, and follow the permission steps below. The release uses ad-hoc signing and is not notarized; macOS may ask you to confirm that you want to open it.
+
+### Verify the download
+
+Releases are built by GitHub Actions from the tagged source ([`release.yml`](.github/workflows/release.yml)), and every release includes a `SHA256SUMS.txt` file. To check that the zip you downloaded is the one the workflow produced, compare its checksum with the value listed there:
+
+```bash
+shasum -a 256 ~/Downloads/Reset-WhatsApp.zip
+```
 
 ## Install and use
 
@@ -45,7 +55,7 @@ When replacing the app with a newly built version, remove its old Full Disk Acce
 
 Requirements:
 
-- macOS 13 or later
+- macOS 13 or later, on Apple Silicon or Intel (the build targets the Mac it runs on)
 - Xcode and Command Line Tools
 
 Run:
@@ -61,10 +71,13 @@ The app is written to `build/Reset WhatsApp.app` and signed locally with an ad-h
 
 - `Sources/main.swift` — native app and cleanup logic
 - `Sources/build-icon.swift` — packs PNG representations into ICNS
-- `Resources/ResetWhatsApp.png` — icon source artwork
+- `Resources/ResetWhatsApp.svg` — icon design (original artwork on Apple's 1024 px icon grid)
+- `Resources/ResetWhatsApp.png` — 1024 × 1024 render of the icon used by the build
 - `Resources/Info.plist` — app metadata
 - `Scripts/build.sh` — reproducible build
 - `Scripts/verify.sh` — bundle, executable, icon, and signature checks
+- `.github/workflows/build.yml` — builds and verifies every push and pull request
+- `.github/workflows/release.yml` — builds, packages, and publishes a release for each `v*` tag
 
 ## Contributing
 

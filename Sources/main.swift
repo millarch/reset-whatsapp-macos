@@ -66,7 +66,6 @@ private func stopWhatsApp() {
     for application in NSRunningApplication.runningApplications(withBundleIdentifier: whatsAppBundleID) {
         application.forceTerminate()
     }
-    runProcess("/usr/bin/pkill", ["-f", "/Applications/WhatsApp.app/Contents/"])
 }
 
 private func libraryPath(_ relativePath: String) -> String {
